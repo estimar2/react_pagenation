@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import Custom_Pagination from "./Components/Custom_Pagination";
+
 const App = () => {
   useEffect(() => {
     _getUser();
@@ -21,7 +23,11 @@ const App = () => {
       .catch(e => console.error(e));
   };
 
-  return <div>Hello pagination</div>;
+  return (
+    <div>
+      <Custom_Pagination total={50} />
+    </div>
+  );
 };
 
 export default App;
