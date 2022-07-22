@@ -1,33 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
-
-import Custom_Pagination from "./Components/Custom_Pagination";
 
 const App = () => {
   useEffect(() => {
-    _getUser();
+    _getData();
   }, []);
 
-  const _getUser = async () => {
+  const _getData = async () => {
     await axios
-      .get("/api/users")
+      .get("api/getSampleList")
       .then(res => {
         if (res.status === 200) {
           const resultData = res.data;
 
-          console.log(resultData, "확인");
+          console.log(resultData, "resData");
         } else if (res.status === 400) {
           alert("res.status === 400");
         }
       })
-      .catch(e => console.error(e));
+      .catch(e => console.error(e, "error"));
   };
 
-  return (
-    <div>
-      <Custom_Pagination total={50} />
-    </div>
-  );
+  return <div>Hello React</div>;
 };
 
 export default App;
